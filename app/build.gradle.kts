@@ -1,9 +1,20 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("kotlin-kapt") // Add Kapt plugin
     id("com.google.dagger.hilt.android") // Add Hilt plugin
+}
+val keystorePropertiesFile = rootProject.file("app/keystore.properties")
+// Create a new Properties object
+val keystoreProperties = Properties() // <-- 2. Declare the variable here
+
+// Load the properties file if it exists
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 }
 
 android {
@@ -20,6 +31,22 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        // The debug config is pre-defined by Android Studio
+        getByName("debug") {
+            // This is the default debug keystore
+        }
+        // You would create a 'release' config here for production,
+        // loading properties from a secure file.
+        // For example:
+        create("release") {
+             storeFile = file("./keystore.jks")
+             storePassword = keystoreProperties.getProperty("storePassword")
+             keyAlias = keystoreProperties.getProperty("keyAlias")
+             keyPassword = keystoreProperties.getProperty("keyPassword")
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -27,14 +54,22 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
+        }
+        create("qa") {
+            // This makes the 'qa' build debuggable
+            isDebuggable = true
+            applicationIdSuffix = ".qa"
+            signingConfig = signingConfigs.getByName("debug")
+
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
