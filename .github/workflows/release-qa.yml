@@ -32,6 +32,7 @@ jobs:
         run: |
           gem install bundler --user-install
           gem install fastlane --user-install
+          gem install fastlane-plugin-firebase_app_distribution --user-install
           # Add user gem bin path to PATH for subsequent steps
           echo "export PATH=$HOME/.local/share/gem/ruby/3.2.0/bin:$PATH" >> $GITHUB_ENV
 
