@@ -60,7 +60,7 @@ jobs:
       - name: Run Fastlane
         run: |
           ls 
-	  cd android
+          cd android
           ls
           fastlane build build_type:qa 
 
