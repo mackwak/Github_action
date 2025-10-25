@@ -9,6 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
     steps:
       # 1️⃣ Checkout repo
       - name: Checkout code
@@ -26,6 +29,16 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2
+
+        - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Firebase CLI
+        run: |
+          npm install -g firebase-tools
+          firebase --version
 
       # 4️⃣ Install Fastlane (user-level to avoid permissions)
       - name: Install Bundler & Fastlane
