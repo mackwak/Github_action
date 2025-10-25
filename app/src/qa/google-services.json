@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "451635728068",
+    "project_id": "my-feeling-app",
+    "storage_bucket": "my-feeling-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451635728068:android:d632b898ebd5a267cf8391",
+        "android_client_info": {
+          "package_name": "com.example.githubaction"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCofdXQcfmR13wst-O9nKgzxEyoRBAixZE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451635728068:android:f1bd79b08e232e5dcf8391",
+        "android_client_info": {
+          "package_name": "com.example.githubaction.qa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCofdXQcfmR13wst-O9nKgzxEyoRBAixZE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451635728068:android:cacb9017b72f9c11cf8391",
+        "android_client_info": {
+          "package_name": "com.myfeelingapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCofdXQcfmR13wst-O9nKgzxEyoRBAixZE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
