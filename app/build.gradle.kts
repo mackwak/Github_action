@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     id("kotlin-kapt") // Add Kapt plugin
     id("com.google.dagger.hilt.android") // Add Hilt plugin
+    id("com.google.gms.google-services")
 }
 val keystorePropertiesFile = rootProject.file("app/keystore.properties")
 // Create a new Properties object
@@ -90,6 +91,9 @@ dependencies {
     kapt("com.google.dagger:hilt-compiler:2.51.1")
     // For ViewModel injection in Compose
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+
+    implementation(platform("com.google.firebase:firebase-bom:34.4.0"))
+    implementation("com.google.firebase:firebase-analytics")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
