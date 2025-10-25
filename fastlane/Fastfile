@@ -64,7 +64,7 @@ lane :build do |options|
       release_notes: "New build with bug fixes and features.",
       groups: "wow" # Optional: Distribute to a specific tester group,
       )
- 
+    end 
     UI.success("✅ Build successful for variant: #{build_type}!")
     # The generated APK/AAB will be in app/build/outputs/
   end
