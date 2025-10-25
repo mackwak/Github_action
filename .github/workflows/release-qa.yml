@@ -59,6 +59,5 @@ jobs:
       # 7️⃣ Run Fastlane lane (example: `fastlane android beta`)
       - name: Run Fastlane
         run: |
-          cd android
           fastlane build build_type:qa 
 
