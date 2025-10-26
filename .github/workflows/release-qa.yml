@@ -1,4 +1,4 @@
-name: Android Fastlane CI
+name: QA
 
 on:
   push:

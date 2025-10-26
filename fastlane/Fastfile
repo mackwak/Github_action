@@ -50,14 +50,21 @@ lane :build do |options|
     gradle(
       task: "assemble#{build_type.capitalize}"
     )
-    firebase_app_distribution(
-    app: "1:451635728068:android:f1bd79b08e232e5dcf8391", # Replace with your Firebase App ID
-    apk_path: "app/build/outputs/apk/qa/app-qa.apk", # Adjust path as needed
-    release_notes: "New build with bug fixes and features.",
-    groups: "wow", # Optional: Distribute to a specific tester group,
-    debug: true
-    )
-
+    if build_type == "qa"
+      firebase_app_distribution(
+      app: "1:451635728068:android:f1bd79b08e232e5dcf8391", # Replace with your Firebase App ID
+      apk_path: "app/build/outputs/apk/qa/app-qa.apk", # Adjust path as needed
+      release_notes: "New build with bug fixes and features.",
+      groups: "wow" # Optional: Distribute to a specific tester group,
+      )
+    else
+      firebase_app_distribution(
+      app: "1:451635728068:android:d632b898ebd5a267cf8391", # Replace with your Firebase App ID
+      apk_path: "app/build/outputs/apk/release/app-release.apk", # Adjust path as needed
+      release_notes: "New build with bug fixes and features.",
+      groups: "wow" # Optional: Distribute to a specific tester group,
+      )
+    end 
     UI.success("✅ Build successful for variant: #{build_type}!")
     # The generated APK/AAB will be in app/build/outputs/
   end
