@@ -65,6 +65,10 @@ lane :build do |options|
       groups: "wow" # Optional: Distribute to a specific tester group,
       )
     end 
+    gradle(
+    task: "test",
+    build_type: "Debug"
+    ) 
     UI.success("✅ Build successful for variant: #{build_type}!")
     # The generated APK/AAB will be in app/build/outputs/
   end
